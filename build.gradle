@@ -1,0 +1,59 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        maven {
+            name = "forge"
+            url = "https://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = 'sponge'
+            url = 'https://repo.spongepowered.org/maven'
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'org.spongepowered:mixingradle:0.4-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.liteloader'
+apply plugin: 'org.spongepowered.mixin'
+
+group = 'tomb'
+version = '1.0'
+archivesBaseName = 'ChatCalc'
+
+minecraft {
+    version = project.mcVersion
+    mappings = project.mcpMappings
+    runDir = "run"
+}
+
+sourceSets {
+    main {
+        // Refmap declaration must match the refmap name specified in the json config
+        ext.refMap = "mixins.chatcalc.refmap.json"
+    }
+}
+
+litemod {
+    json{
+        name = "chatcalc"
+        mcversion = project.mcVersion
+        description = "Adds an ingame calculator using the chat field."
+        mixinConfigs += "mixins.chatcalc.json"
+    }
+}
+
+mixin {
+    defaultObfuscationEnv notch
+}
+
+jar {
+    from litemod.outputs
+}

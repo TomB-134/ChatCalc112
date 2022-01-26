@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.5.3",
+  "package": "tomb.chatcalc.mixin",
+  "refmap": "mixins.chatcalc.refmap.json",
+  "mixins": [
+    "GuiChatMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
