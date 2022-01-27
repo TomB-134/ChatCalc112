@@ -1,17 +1,28 @@
 package tomb.chatcalc;
 
 import com.mumfrey.liteloader.LiteMod;
+import net.minecraft.client.resources.I18n;
 
 import java.io.File;
 
 public class LiteModChatCalc implements LiteMod {
     public static String decimalFormat = "###0.##";
+    public static String doubleString = " (Double Chest) + ";
+    public static String doublesString = " (Double Chests) + ";
+    public static String shulkerboxString = " (Shulker Box) + ";
+    public static String shulkerBoxesString = " (Shulker Boxes) + ";
+    public static String stackString = " (Stack) + ";
+    public static String stacksString = " (Stacks) + ";
+    public static String itemString = " (Item) ";
+    public static String itemsString = " (Items) ";
+
     /**
      * Default constructor. All LiteMods must have a default constructor. In general you should do very little
      * in the mod constructor EXCEPT for initialising any non-game-interfacing components or performing
      * sanity checking prior to initialisation
      */
     public LiteModChatCalc() {
+        System.out.println(I18n.format("test"));
     }
 
     /**
